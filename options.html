@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Force Image Paste – Settings</title>
+  <style>
+    body { max-width: 720px; margin: 24px auto; padding: 0 16px; font: 14px/1.5 system-ui, "Segoe UI", sans-serif; color: #1d2226; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 16px; margin-top: 28px; }
+    label { display: block; font-weight: 600; margin-top: 14px; }
+    .hint { font-weight: 400; color: #666; font-size: 12px; }
+    input, textarea { width: 100%; box-sizing: border-box; font: 13px ui-monospace, Consolas, monospace; padding: 6px 8px; margin-top: 4px; border: 1px solid #bbb; border-radius: 4px; }
+    textarea { height: 96px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    button { font: inherit; padding: 6px 14px; border: 1px solid #0a66c2; background: #fff; color: #0a66c2; border-radius: 16px; cursor: pointer; }
+    button.primary { background: #0a66c2; color: #fff; }
+    #msg { margin-top: 12px; min-height: 1.5em; }
+    .ok { color: #1a7f37; }
+    .err { color: #d93025; }
+    a { color: #0a66c2; }
+  </style>
+</head>
+<body>
+  <h1>Force Image Paste – Settings</h1>
+  <p>LinkedIn changes its page without notice. When the extension shows the "configuration looks outdated" warning, you fix it here. Two ways: fetch the latest config from GitHub, or edit the values yourself. <a id="help" href="#" target="_blank" rel="noopener">Step-by-step guide</a>.</p>
+  <p class="hint" id="current"></p>
+
+  <h2>Update from GitHub</h2>
+  <label>Config URL <span class="hint">– raw JSON file. Point it to your fork if you maintain your own.</span>
+    <input id="remoteConfigUrl" spellcheck="false">
+  </label>
+  <div class="row">
+    <button id="fetch">Fetch latest config</button>
+  </div>
+  <p class="hint">Fetching only fills in the form below. Nothing is saved until you click Save.</p>
+
+  <h2>Selectors</h2>
+  <label>Media button labels <span class="hint">– the button's aria-label, one per line. It depends on your LinkedIn language.</span>
+    <textarea id="mediaButtonLabels" spellcheck="false"></textarea>
+  </label>
+  <label>Editor selector <span class="hint">– CSS selector of the post text editor.</span>
+    <input id="editorSelector" spellcheck="false">
+  </label>
+  <label>Composer container selector <span class="hint">– CSS selector of the element that wraps the composer.</span>
+    <input id="dialogSelector" spellcheck="false">
+  </label>
+  <label>Composer URL pattern <span class="hint">– regular expression matched against the page path while the composer is open.</span>
+    <input id="composerUrlPattern" spellcheck="false">
+  </label>
+  <label>Timeout (ms) <span class="hint">– how long to wait for LinkedIn's file input after clicking the media button.</span>
+    <input id="timeoutMs" type="number" min="500" max="15000" step="100">
+  </label>
+
+  <div class="row">
+    <button class="primary" id="save">Save</button>
+    <button id="reset">Reset to built-in defaults</button>
+  </div>
+  <div id="msg"></div>
+
+  <script src="defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

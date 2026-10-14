@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "updated": "2026-10-14",
+  "composerUrlPattern": "^/sharing/compose",
+  "dialogSelector": "dialog",
+  "editorSelector": ".ProseMirror",
+  "mediaButtonLabels": ["Multimedia", "Media", "Add media"],
+  "timeoutMs": 3000
+}

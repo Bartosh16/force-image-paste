@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Force Image Paste",
+  "version": "1.0.0",
+  "description": "Brings back Ctrl+V for images in the LinkedIn post composer.",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Force Image Paste",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["main.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["defaults.js", "bridge.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

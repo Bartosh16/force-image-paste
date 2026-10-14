@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Force Image Paste</title>
+  <style>
+    body { width: 340px; margin: 0; padding: 14px; font: 13px/1.45 system-ui, "Segoe UI", sans-serif; color: #1d2226; }
+    h1 { font-size: 15px; margin: 0 0 10px; }
+    .status { padding: 10px; border-radius: 6px; margin-bottom: 10px; }
+    .ok { background: #e7f4ea; }
+    .bad { background: #fdecea; }
+    .status ul { margin: 6px 0 0; padding-left: 18px; }
+    .muted { color: #666; font-size: 12px; }
+    .row { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+    button { font: inherit; padding: 5px 10px; border: 1px solid #0a66c2; background: #fff; color: #0a66c2; border-radius: 14px; cursor: pointer; }
+    button.primary { background: #0a66c2; color: #fff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+    td { padding: 3px 0; }
+    td:last-child { text-align: right; font-weight: 600; }
+    .yes { color: #1a7f37; }
+    .no { color: #d93025; }
+    .cands button { margin: 3px 3px 0 0; font-size: 12px; padding: 2px 8px; }
+    a { color: #0a66c2; }
+  </style>
+</head>
+<body>
+  <h1>Force Image Paste</h1>
+  <div id="status" class="status"></div>
+  <div class="muted" id="meta"></div>
+
+  <div class="row">
+    <button class="primary" id="check">Check this tab</button>
+    <button id="settings">Settings</button>
+  </div>
+  <div id="result"></div>
+
+  <p class="muted"><a id="help" href="#" target="_blank" rel="noopener">How to fix an outdated config</a></p>
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
