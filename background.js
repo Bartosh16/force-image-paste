@@ -34,7 +34,6 @@ async function handleStatus({ status, code, detail }) {
 
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg?.type === 'fip:status') handleStatus(msg.payload);
-  if (msg?.type === 'fip:openOptions') chrome.runtime.openOptionsPage();
 });
 
 // Saving a new config resets the warning; the next composer check or

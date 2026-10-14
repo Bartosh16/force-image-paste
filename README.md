@@ -4,7 +4,7 @@ A tiny Chrome extension that brings back **Ctrl+V for images in the LinkedIn pos
 
 Take a screenshot (Win+Shift+S, Cmd+Ctrl+Shift+4) or right-click an image and choose "Copy image", click into a new LinkedIn post, press Ctrl+V. The image lands in LinkedIn's media editor, exactly as if you had uploaded it with the media button.
 
-Not affiliated with LinkedIn. Not on the Chrome Web Store on purpose: you install it from this repo and you stay in control of it.
+Not affiliated with LinkedIn. Not on the Chrome Web Store on purpose: you install it from this repo and you stay in control of it. Please read the [disclaimer](#disclaimer) before using it.
 
 ## Why it's needed
 
@@ -42,9 +42,11 @@ The code is a few hundred lines of plain JavaScript with no dependencies. Read i
 
 LinkedIn changes its page without notice, and at some point the extension will stop finding what it needs. It tells you when that happens:
 
-- **a red `!` badge** on the extension icon,
-- **a warning in the corner of LinkedIn**: "configuration looks outdated", with a **How to fix** button,
-- the extension also checks the composer every time you open **Start a post**, so you usually see the warning before your first failed paste.
+- **a red `!` badge** on the extension icon (pin the extension to your toolbar so you see it),
+- **the popup** (click the icon) says "Configuration looks outdated" and explains what's missing,
+- the extension also checks the composer every time you open **Start a post**, so the badge usually lights up before your first failed paste.
+
+The extension never draws anything on the LinkedIn page itself. All warnings stay on the toolbar icon.
 
 How to fix it, easiest first:
 
@@ -84,7 +86,7 @@ Everything lives in Settings and is stored in your browser (synced if you use Ch
 |---|---|
 | `manifest.json` | Extension manifest (MV3) |
 | `main.js` | Runs in the page; handles the paste and the composer check |
-| `bridge.js` | Connects the page with settings, the badge and the popup; shows the warning |
+| `bridge.js` | Connects the page with settings, the badge and the popup |
 | `background.js` | Keeps the error list and the `!` badge |
 | `popup.html`, `popup.js` | Status, **Check this tab**, one-click label fix |
 | `options.html`, `options.js` | Settings, **Fetch latest config** |
@@ -94,6 +96,14 @@ Everything lives in Settings and is stored in your browser (synced if you use Ch
 ## Contributing
 
 Pull requests are welcome, especially `selectors.json` updates and labels for new languages. Please keep the extension dependency-free and permission-light.
+
+## Disclaimer
+
+This is an unofficial, personal tool. It is not affiliated with, endorsed by or supported by LinkedIn.
+
+The extension changes how the LinkedIn page behaves: it intercepts the paste event and clicks the composer's media button on your behalf. [LinkedIn's User Agreement](https://www.linkedin.com/legal/user-agreement) (section 8.2) prohibits modifying the Services, and LinkedIn's [Prohibited software and extensions](https://www.linkedin.com/help/linkedin/answer/a1341387) page covers browser extensions that modify or automate activity on its website. Using this extension may therefore conflict with those terms.
+
+It doesn't scrape data, send messages or invitations, react to posts, or get around any limits or security features. It only acts when you press Ctrl+V and does what you would otherwise do by hand with the media button. Still, the decision is yours: **you use it at your own risk**, and the authors are not responsible for any consequences for your LinkedIn account. The software is provided "as is", without warranty of any kind (see [LICENSE](LICENSE)).
 
 ## License
 
